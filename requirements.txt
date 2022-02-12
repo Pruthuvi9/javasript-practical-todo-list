@@ -1,0 +1,63 @@
+Version 12
+  [x] Each todo should have its own edit button.
+  [x] Edit button should work.
+  [x] If edit input prompt is cancelled, do nothing.
+  [x] If edit input prompt is an empty string, do nothing.
+
+Version 11
+  [x] Each todo should have its own toggle button.
+  [x] The toggle buttons should run the toggle function for each todo.
+
+Version 10
+  [x] Each todo should have its own remove button.
+  [x] The remove buttons should run the remove function for each todo.
+
+Version 9
+  [x] There should be an li for each todo.
+  [x] Each li should show the todoText property.
+  [x] Each li should show the completed property.
+
+Version 8
+  [x] A button for add function.
+  [x] A button for edit function.
+  [x] A button for remove function.
+  [x] A button for toggle function.
+
+Version 7
+  [x] It should have a displayTodos button.
+  [x] The displayTodos buttons should run the displayTodos function.
+  [x] It should have a toggleAll button.
+  [x] The toggleAll button should run the toggleAll function.
+
+Version 6
+  [] It should have a function for toggling all todos.
+    [] If everything is false ==> change everything to true.
+    [] If everything is true ==> change everything to false.
+    [] If mixed ==> change everything to true.
+
+Version 5
+  [x] It should have a function to display todos
+  [x] displayTodos should show the "todoText" property
+  [x] displayTodos should show the "completed" property
+
+Version 4
+  [x] It should have a function to toggle a todo.
+
+Version 3
+  [x] Initialize todos variable with objects.
+  [x] The add function should add objects.
+  [x] The edit function should edit objects.
+
+Version 2
+  It should have
+  [x] a function to add a todo
+  [x] a function to edit a todo
+  [x] a function to remove a todo
+
+Version 1
+  It should have
+  [x] a place to store todos
+  [x] a way to display todos
+  [x] a way add todos
+  [x] a way to edit a todos
+  [x] a way to remove a todo

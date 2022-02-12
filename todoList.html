@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Practical Javascript</title>
+  </head>
+
+  <body>
+    
+    <!-- toggle all button -->
+    <button id="toggle-all-button">Toggle All</button>
+    
+    <!-- add todos button -->
+    <div id="add-todo">
+      <input id="add-input" type="text" placeholder="Enter new todo">
+      <button id="add-button">Add</button>
+    </div>
+
+    <ul id="todo-list">
+    </ul>
+
+    <script>
+      var todos = [
+        {todosText: 'Item 1', completed: true, itemPosition: 0},
+        {todosText: 'Item 2', completed: true, itemPosition: 1},
+        {todosText: 'Item 3', completed: false, itemPosition: 2}
+      ];
+
+      displayTodo();
+
+      // add function
+      function add() {
+        let newItem = addInput.value;
+        todos.push({todosText: newItem, completed: false, itemPosition: todos.length});
+        displayTodo();
+        addInput.value = "";
+      }
+
+      function edit(event) {
+        
+        var ind = Number(event.target.id[event.target.id.length - 1]);
+        var newTextInput = prompt("Edit todo", todos[ind].todosText);
+
+        if (newTextInput !== null && newTextInput !== "") {
+          todos[ind].todosText = newTextInput;
+        }
+
+        displayTodo();
+
+      }
+
+      function remove(event) {
+        var itemInd = event.target.id[event.target.id.length - 1];
+
+        todos.splice(Number(itemInd), 1);
+        displayTodo();
+        
+      }
+
+      function toggle(event) {
+        var itemInd = event.target.id[event.target.id.length - 1];
+
+        if (todos[itemInd].completed === false) {
+          todos[itemInd].completed = true;
+        } else {
+          todos[itemInd].completed = false;
+        } 
+
+        displayTodo();
+        
+      }
+
+      // toggle all function
+      function toggleAll() {
+        let trueCounter = 0;
+
+        for (let i = 0; i < todos.length; i++) {
+          if (todos[i].completed === true) {
+            trueCounter++;
+          }
+        }
+
+        //if everything is true
+        if (trueCounter === todos.length) {
+          for (let j = 0; j < todos.length; j++) {
+            todos[j].completed = false;
+          }
+        }
+
+        //if everything is not true
+        else {
+          for (let j = 0; j < todos.length; j++) {
+            todos[j].completed = true;
+          }
+        }
+
+        displayTodo();
+      }
+
+      // display todo function
+      function displayTodo() {
+        
+        for (let i = 0; i < todos.length; i++) {
+          todos[i].itemPosition = i;
+          console.log(todos[i]);
+        }
+
+        var todoListUl = document.getElementById('todo-list');
+
+        todoListUl.innerHTML = "";
+        
+        for (let i = 0; i < todos.length; i++) {
+          var listItem = document.createElement('li');
+          
+          if (todos[i].completed) {
+            listItem.innerText = "[x] " + todos[i].todosText;
+          } else {
+            listItem.innerText = "[] " + todos[i].todosText;
+          }
+
+          todoListUl.appendChild(listItem);
+
+          // remove button for each item
+          var removeEachItemButton = document.createElement('button');
+          removeEachItemButton.innerText = "Remove";
+          removeEachItemButton.addEventListener('click', remove);
+          removeEachItemButton.id = 'remove-button-item-' + i;
+
+          listItem.appendChild(removeEachItemButton);
+
+          // toggle button for each item
+          var toggleEachItemButton = document.createElement('button');
+          toggleEachItemButton.innerText = "Toggle";
+          toggleEachItemButton.addEventListener('click', toggle);
+          toggleEachItemButton.id = 'toggle-button-item-' + i;
+
+          listItem.appendChild(toggleEachItemButton);
+
+          // edit button for each item
+          var editItemButton = document.createElement('button');
+          editItemButton.innerText = 'Edit';
+          editItemButton.addEventListener('click', edit);
+          editItemButton.id = 'edit-button-' + i;
+
+          listItem.appendChild(editItemButton);
+
+        }
+      }
+
+      // toggle all button
+      var toggleAllButton = document.getElementById('toggle-all-button');
+      toggleAllButton.addEventListener('click', toggleAll);
+
+      // add todo button
+      var addInput = document.getElementById('add-input');
+      var addButton = document.getElementById('add-button');
+      addButton.addEventListener('click', add);
+
+    </script>
+  </body>
+</html>
